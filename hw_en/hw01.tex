@@ -1,0 +1,32 @@
+\homework{1}
+
+\begin{exercise}{1.1}
+  Question to fill in.
+\end{exercise}
+
+\textcolor{red}{to do}
+
+\begin{exercise}{1.2}
+  Verify the validity of the deduction step in the following statement:
+
+  I can doubt that the physical world exists. I can even doubt whether my body really exists. I cannot doubt that I myself exist. So I am not my body.
+
+  \hfill \textemdash\ Descartes
+
+\end{exercise}
+
+A formalization could be:
+
+Premises:
+\begin{enumerate}
+  \item $can\_doubt(I, physical\_world)$,
+  \item $can\_doubt(I, my\_body)$,
+  \item $cannot\_doubt(I, I)$.
+\end{enumerate}
+Conclusion:
+
+$\neg =(I, my\_body)$.
+
+It is straightforward that the deduction step is invalid.
+
+Note that $cannot\_doubt$ instead of $\neg can\_doubt$ are used to capture the subjective nature of ``doubt''. $be$ instead of $=$ might be used in conclusion, in repect of that relations between pairs of expressions in natual languages may not qualify as ``equality'' that we refer to in formal languages.

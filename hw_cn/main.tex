@@ -1,0 +1,64 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsthm, stmaryrd}
+\usepackage[colorlinks=true, linkcolor=cyan, citecolor=green, urlcolor=blue]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont{SimSong}
+
+\newcommand{\homework}[1]{
+  \clearpage
+  \refstepcounter{section}% Step the section counter
+  \section*{Homework \thesection}\label{#1}
+  \addcontentsline{toc}{section}{Homework \thesection}
+}
+
+\newcounter{exercise}[section]
+\renewcommand{\theexercise}{\arabic{exercise}}
+
+\NewDocumentEnvironment{exercise}{m +b}
+  {
+    \refstepcounter{exercise}
+    \renewcommand{\qedsymbol}{$\triangleleft$}
+
+    \noindent\textbf{\theexercise}\label{#1}
+    \pushQED{\qed}
+    #2
+    \popQED
+
+  }
+  {}
+
+\makeatletter
+\providecommand*{\Dashv}{%
+  \mathrel{%
+    \mathpalette\@Dashv\vDash
+  }%
+}
+\newcommand*{\@Dashv}[2]{%
+  \reflectbox{$\m@th#1#2$}%
+}
+\makeatother
+
+% Title Information
+\title{部分数理逻辑作业}
+\author{Hao Su}
+\date{\today}
+
+% Begin Document
+\begin{document}
+
+\setcounter{section}{6}
+
+\input{hw07_cn.tex}
+\input{hw08_cn.tex}
+\input{hw09_cn.tex}
+
+\end{document}

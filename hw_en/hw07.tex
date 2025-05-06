@@ -1,0 +1,53 @@
+\homework{7}
+
+\begin{exercise}{7.1}
+  [Enderton, ex.~1, 2, 5, p.~17]
+  Translate between English and the specified first-order language.
+  \begin{enumerate}[label=(\alph*)]
+    \item Any uninteresting number with the property that all smaller numbers are interesting certainly is interesting. ($\forall$, for all things; $N$, is a number; $I$, interesting; $<$, is less than; $0$, a constant symbol intended to denote zero.)
+    \item There is no number such that no number is less than it. (The same language as in Item a.)
+    \item $\forall x(Nx\rightarrow Ix\rightarrow\neg\forall y(Ny\rightarrow Iy\rightarrow\neg x<y))$. (The same language as in Item a. There exists a relatively concise translation.)
+    \item (i) You can fool some of the people all of the time. (ii) You can fool all of the people some of the time. (iii) You can’t fool all of the people all of the time. ($\forall$, for all things; $P$, is a person; $T$ , is a time; $F\ x\ y$, you can fool $x$ at $y$. One or more of the above may be ambiguous, in which case you will need more than one translation.)\qedhere
+  \end{enumerate}
+\end{exercise}
+
+\begin{enumerate}[label=(\alph*)]
+  \item $\forall x(Nx\wedge\neg Ix\wedge\forall y (Ny\wedge y<x\rightarrow Iy)\rightarrow Ix).$
+  \item $\neg\exists x(Nx\wedge\neg\exists y(Ny\wedge y<x)).$
+  \item Any interesting number is less than some interesting number.
+  \item (i) Here ambiguity is in that it either says that there are some (fixed) people you can fool all time, or says that at every moment there are (some, not fixed) people you can fool, i.e. either $\exists x(Px\wedge\forall y(Ty\to Fxy))$ or $\forall y(Ty\to\exists x(Px\wedge Fxy))$. (ii) Here ambiguity is in that it either says that you can fool each person at some time (times can be different for different people), or says that at some (fixed) time you can fool everyone (at that specific time): $\forall x(Px\to\exists y(Ty\wedge Fxy))$ or $\exists y(Ty\wedge\forall x(Px\to Fxy))$. (iii) $\neg\forall x(Px\to\forall y(Ty\to Fxy)).$
+\end{enumerate}
+
+\begin{exercise}{7.2}
+  [Enderton, ex.~1, p.~129]
+  For a term $u$, let $u_t^x$ be the expression obtained from u by replacing the variable $x$ by the term $t$. Restate this definition without using any form of the word “replace” or its synonyms.
+\end{exercise}
+
+For term $t$ and variable $x$, we define $\sigma_{x\mapsto t}:V\rightarrow T$, where $V$ is the set of variables, $T$ the set of terms and $\sigma_{x\mapsto t}$ identity except that it maps $x$ to $t$ and then recursively define the extension $\overline{\sigma_{x\mapsto t}}:T\rightarrow T$:
+\begin{enumerate}
+  \item For each variable $v$, $\overline{\sigma_{x\mapsto t}}(v)=h(v)$.
+  \item For each constant symbol $c$, $\overline{\sigma_{x\mapsto t}}(c)=c$.
+  \item For terms $t_1,\dots,t_n$ and $n$-place function symbol $f$,
+        \[\overline{\sigma_{x\mapsto t}}(f(t_1,\dots,t_n))=f(\overline{\sigma_{x\mapsto t}}(t_1),\dots,\overline{\sigma_{x\mapsto t}}(t_n)).\]
+\end{enumerate}
+
+\begin{exercise}{7.3}
+  [Enderton, ex.~9, p.~130]
+  \begin{enumerate}[label=(\alph*)]
+    \item Show by two examples that $(\varphi_y^x)_x^y$ is not in general equal to $\varphi$, where the first shows that $x$ may occur in $(\varphi_y^x)_x^y$ at a place where it does not occur in $\varphi$ and the second shows that $x$ may occur in a $\varphi$ at a place where it does not occur in $(\varphi_y^x)_x^y$.
+    \item Prove \textit{Re-replacement lemma}: If $y$ does not occur in $\varphi$, then $x$ is substitutable for $y$ in $\varphi_y^x$ and $(\varphi_y^x)_x^y=\varphi$.\qedhere
+  \end{enumerate}
+\end{exercise}
+
+\begin{enumerate}[label=(\alph*)]
+  \item $\varphi=P\ y$ ($y$ occurs free in $\varphi$) and $\forall y\ P\ x$ (not substitutable).
+  \item
+        We use induction on $\varphi$.
+
+        Case 1: For atomic $\varphi=P\ t_1,\dots,t_n$, we have that $x$ is substitutable for $y$ in $\varphi_y^x$ and that
+        \[
+          (\varphi_y^x)_x^y = ((P\ t_1,\dots,t_n)_y^x)_x^y = P\ ((t_1)_y^x)_x^y,\dots,((t_n)_y^x)_x^y=\varphi.
+        \]
+        Case 2: Given the inductive hypothesis, the inductive step holds by definition for formula building operations $\mathcal{E}_{\neg}$, $\mathcal{E}_{\rightarrow}$ and $\mathcal{Q}_i$, where $v_i\neq x$ and $v_i\neq y$ (since $y$ does not occur in $\varphi$).\newline
+        Case 3: $\varphi=\forall x\ \psi$. Then $(\forall x\ \psi)_y^x=\forall x\ \psi$, in which $y$ does not occur (free, and thus $x$ is substitable.) Therefore $(\varphi_x^y)_y^x=((\forall x\ \psi)_y^x)_x^y=(\forall x\ \psi)_y^x=\forall x\ \psi=\varphi$.
+\end{enumerate}
