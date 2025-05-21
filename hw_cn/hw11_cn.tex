@@ -1,0 +1,59 @@
+\homework{11}
+
+\begin{exercise}{11.1}
+  [Enderton，第 4 题，第 146 页]
+  设 $\Gamma=\{\neg\forall v_1 P v_1, Pv_2, Pv_3,\dots\}$。$\Gamma$ 是一致的吗？$\Gamma$ 是可满足的吗？
+\end{exercise}
+
+\textcolor{red}{to do}
+
+\begin{exercise}{11.2}
+  [Enderton，第 7 题，第 146 页]
+  对于下列每个句子，要么说明其存在一个推导，要么给出一个反模型（即在其中该句子为假的结构）。
+  \begin{enumerate}[label=(\alph*)]
+    \item $\forall x (Qx \rightarrow \forall y \, Qy)$
+    \item $(\exists x \, Px \rightarrow \forall y \, Qy) \rightarrow \forall z (Pz \rightarrow Qz)$
+    \item $\forall z (Pz \rightarrow Qz) \rightarrow (\exists x \, Px \rightarrow \forall y \, Qy)$
+    \item $\neg \exists y \, \forall x (Pxy \leftrightarrow \neg Pxx)$\qedhere
+  \end{enumerate}
+\end{exercise}
+
+\textcolor{red}{to do}
+
+\begin{exercise}{11.3}
+  [Enderton，第 8 题，第 146 页]
+  假设该语言（带等号）仅包含量词 $\forall$ 和谓词符号 $P$，其中 $P$ 是一个二元谓词符号。设 $\mathfrak{A}$ 是一个结构，其 $|\mathfrak{A}| = \mathbb{Z}$，即整数集合（正整数、负整数和零），并且当且仅当 $|a - b| = 1$ 时，有 $\langle a, b \rangle \in P^{\mathfrak{A}}$。因此，$\mathfrak{A}$ 看起来像一个无限图：
+  \[
+    \cdots \longleftrightarrow \bullet \longleftrightarrow \bullet \longleftrightarrow \bullet \longleftrightarrow \cdots
+  \]
+
+  证明存在一个与其初等等价的结构 $\mathfrak{B}$，但它不是连通的。（连通，是指对于 $|\mathfrak{B}|$ 中任意两个元素，存在一条路径连接它们。一条从 $a$ 到 $b$ 的长度为 $n$的路径是一个序列 $\langle p_0, p_1, \ldots, p_n \rangle$，其中 $a = p_0$ 且 $b = p_n$，并且对于每个 $i$，都有 $\langle p_i, p_{i+1} \rangle \in P^{\mathfrak{B}}$。）提示：加入常元符号 $c$ 和 $d$。写出表示 $c$ 和 $d$ 距离很远的句子。应用紧致性。
+\end{exercise}
+
+\textcolor{red}{to do}
+
+\begin{exercise}{11.4}
+  [Enderton，第 11 题，第 100 页]
+  对于下列每个关系，在 \((\mathbb{N}; +, \cdot)\) 中给出一个定义它的公式。（语言被假设包含等号以及参数 \(\forall\)、\(+\)、和 \(\cdot\)。）
+  \begin{enumerate}
+    \item \(\{0\}\).
+    \item \(\{1\}\).
+    \item \(\{ \langle m, n \rangle \mid n \text{ 是 } m \text{ 在 } \mathbb{N} \text{ 中的后继} \}\).
+    \item \(\{ \langle m, n \rangle \mid m < n \text{ 在 } \mathbb{N} \text{ 中} \}\).\qedhere
+  \end{enumerate}
+\end{exercise}
+
+\textcolor{red}{
+  Assuming Definability
+}
+
+\begin{exercise}{11.5}
+  [Enderton，第 6 题，第 146 页]
+  设 $\Sigma_1$ 和 $\Sigma_2$ 是两个句子的集合，且没有模型同时满足 $\Sigma_1$ 和 $\Sigma_2$。证明存在一个句子 $\tau$，使得
+  \[
+    \text{Mod } \Sigma_1 \subseteq \text{Mod } \tau \quad \text{且} \quad \text{Mod } \Sigma_2 \subseteq \text{Mod } \lnot \tau.
+  \]
+  （这可以表述为：不相交的 $\text{EC}_\Delta$ 类可以被某个 EC 类区分开。）提示：$\Sigma_1 \cup \Sigma_2$ 是不可满足的；应用紧致性。
+\end{exercise}
+
+\textcolor{red}{Assuming Mod}

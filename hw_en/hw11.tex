@@ -1,0 +1,59 @@
+\homework{11}
+
+\begin{exercise}{11.1}
+  [Enderton, ex.~4, p.~146]
+  Let $\Gamma=\{\neg\forall v_1 P v_1, Pv_2, Pv_3,\dots\}.$ Is $\Gamma$ consistent? Is $\Gamma$ satisfiable?
+\end{exercise}
+
+\textcolor{red}{to do}
+
+\begin{exercise}{11.2}
+  [Enderton, ex.~7, p.~146]
+  For each of the following sentences, either show there is a deduction or give a counter-model (i.e., a structure in which it is false.)
+  \begin{enumerate}[label=(\alph*)]
+    \item $\forall x (Qx \rightarrow \forall y \, Qy)$
+    \item $(\exists x \, Px \rightarrow \forall y \, Qy) \rightarrow \forall z (Pz \rightarrow Qz)$
+    \item $\forall z (Pz \rightarrow Qz) \rightarrow (\exists x \, Px \rightarrow \forall y \, Qy)$
+    \item $\neg \exists y \, \forall x (Pxy \leftrightarrow \neg Pxx)$\qedhere
+  \end{enumerate}
+\end{exercise}
+
+\textcolor{red}{to do}
+
+\begin{exercise}{11.3}
+  [Enderton, ex.~8, p.~146]
+  Assume the language (with equality) has just the parameters $\forall$ and $P$, where $P$ is a two-place predicate symbol. Let $\mathfrak{A}$ be the structure with $|\mathfrak{A}| = \mathbb{Z}$, the set of integers (positive, negative, and zero), and with $\langle a, b \rangle \in P^{\mathfrak{A}}$ iff $|a - b| = 1$. Thus $\mathfrak{A}$ looks like an infinite graph:
+  \[
+    \cdots \longleftrightarrow \bullet \longleftrightarrow \bullet \longleftrightarrow \bullet \longleftrightarrow \cdots
+  \]
+
+  Show that there is an elementarily equivalent structure $\mathfrak{B}$ that is not connected. (Being \emph{connected} means that for every two members of $|\mathfrak{B}|$, there is a path between them. A \emph{path} — of length $n$ — from $a$ to $b$ is a sequence $\langle p_0, p_1, \ldots, p_n \rangle$ with $a = p_0$ and $b = p_n$ and $\langle p_i, p_{i+1} \rangle \in P^{\mathfrak{B}}$ for each $i$.) \textit{Suggestion}: Add constant symbols $c$ and $d$. Write down sentences saying $c$ and $d$ are far apart. Apply compactness.
+\end{exercise}
+
+\textcolor{red}{to do}
+
+\begin{exercise}{11.4}
+  [Enderton, ex.~11, p.~100]
+  For each of the following relations, give a formula which defines it in \((\mathbb{N}; +, \cdot)\). (The language is assumed to have equality and the parameters \(\forall\), \(+\), and \(\cdot\)).
+  \begin{enumerate}
+    \item \(\{0\}\).
+    \item \(\{1\}\).
+    \item \(\{ \langle m, n \rangle \mid n \text{ is the successor of } m \text{ in } \mathbb{N} \}\).
+    \item \(\{ \langle m, n \rangle \mid m < n \text{ in } \mathbb{N} \}\).\qedhere
+  \end{enumerate}
+\end{exercise}
+
+\textcolor{red}{
+  Assuming Definability
+}
+
+\begin{exercise}{11.5}
+  [Enderton, ex.~6, p.~146]
+  Let $\Sigma_1$ and $\Sigma_2$ be sets of sentences such that nothing is a model of both $\Sigma_1$ and $\Sigma_2$. Show that there is a sentence $\tau$ such that
+  \[
+    \text{Mod } \Sigma_1 \subseteq \text{Mod } \tau \quad \text{and} \quad \text{Mod } \Sigma_2 \subseteq \text{Mod } \lnot \tau.
+  \]
+  (This can be stated: Disjoint $\text{EC}_\Delta$ classes can be separated by an EC class.) \textit{Suggestion}: $\Sigma_1 \cup \Sigma_2$ is unsatisfiable; apply compactness.
+\end{exercise}
+
+\textcolor{red}{Assuming Mod}
