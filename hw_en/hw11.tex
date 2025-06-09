@@ -5,7 +5,7 @@
   Let $\Gamma=\{\neg\forall v_1 P v_1, Pv_2, Pv_3,\dots\}.$ Is $\Gamma$ consistent? Is $\Gamma$ satisfiable?
 \end{exercise}
 
-\textcolor{red}{to do}
+It is consistent and satisfiable. Define $P^{\mathfrak{A}}=\{v_2,v_3,\dots\}$ and $s:V\rightarrow|\mathfrak{A}|$ as identity, it follows that for all $\gamma\in \Gamma$, $\vDash_{\mathfrak{A}}\gamma[s]$.
 
 \begin{exercise}{11.2}
   [Enderton, ex.~7, p.~146]
@@ -18,7 +18,33 @@
   \end{enumerate}
 \end{exercise}
 
-\textcolor{red}{to do}
+\begin{enumerate}[label=(\alph*)]
+  \item Not valid. Let $|\mathfrak A|=\{0,1\}$ and $Q^{\mathfrak A}=\{1\}$. Then $\mathfrak A$ is a counter-model.
+  \item
+        $\begin{aligned}[t]
+                       & \vdash(\exists xPx\to\forall yQy)\to \forall z(Pz\to Qz)                             \\
+            \Leftarrow & \exists xPx\to\forall yQy\vdash \forall z(Pz\to Qz)      & \text{by ded,}            \\
+            \Leftarrow & \{\exists xPx\to\forall yQy, Pz\}\vdash Qz               & \text{by gen and ded,}    \\
+                       & \text{which we show directly:}                                                       \\
+            1.         & \forall x\neg Px\vdash \neg Pz                           & \text{Ax.2; ded.}         \\
+            2.         & Pz\vdash \neg\forall x\neg Px                            & \text{1; contraposition.} \\
+            3.         & \{\exists xPx\to\forall yQy, Pz\}\vdash \forall yQy      & \text{2; MP.}             \\
+            4.         & \vdash\forall yQy\to Qz                                  & \text{Ax.2.}              \\
+            5.         & \{\exists xPx\to\forall yQy, Pz\}\vdash Qz               & \text{3; 4; MP.}          \\
+          \end{aligned}$
+  \item Not valid. Let $|\mathfrak A|=\{0,1\}$ and $P^{\mathfrak A}=Q^{\mathfrak A}=\{1\}$. Then $\mathfrak A$ is a counter-model.
+  \item
+        $\begin{aligned}[t]
+                       & \vdash\neg\exists y\forall x(Pxy \leftrightarrow \neg Pxx)                                                          \\
+            \Leftarrow & \vdash\forall y\neg \forall x(Pxy \leftrightarrow\neg Pxx)                                 & \text{by Ax.1 and MP,} \\
+            \Leftarrow & \vdash\neg \forall x(Pxy \leftrightarrow\neg Pxx)                                          & \text{by gen,}         \\
+                       & \text{which we show directly:}                                                                                      \\
+            1.         & \vdash\neg(Pxy \leftrightarrow \neg Pxx)_y^x                                               & \text{Ax.1.}           \\
+            2.         & \vdash\forall x(Pxy \leftrightarrow \neg Pxx)\to (Pxy \leftrightarrow \neg Pxx)_y^x        & \text{Ax.2.}           \\
+            3.         & \vdash\neg(Pxy \leftrightarrow \neg Pxx)_y^x\to\neg\forall x(Pxy \leftrightarrow \neg Pxx) & \text{2; Ax.1; MP.}    \\
+            4.         & \vdash\neg \forall x(Pxy \leftrightarrow\neg Pxx)                                          & \text{1; 3; MP.}       \\
+          \end{aligned}$
+\end{enumerate}
 
 \begin{exercise}{11.3}
   [Enderton, ex.~8, p.~146]
@@ -30,7 +56,19 @@
   Show that there is an elementarily equivalent structure $\mathfrak{B}$ that is not connected. (Being \emph{connected} means that for every two members of $|\mathfrak{B}|$, there is a path between them. A \emph{path} — of length $n$ — from $a$ to $b$ is a sequence $\langle p_0, p_1, \ldots, p_n \rangle$ with $a = p_0$ and $b = p_n$ and $\langle p_i, p_{i+1} \rangle \in P^{\mathfrak{B}}$ for each $i$.) \textit{Suggestion}: Add constant symbols $c$ and $d$. Write down sentences saying $c$ and $d$ are far apart. Apply compactness.
 \end{exercise}
 
-\textcolor{red}{to do}
+Expand the language by adding two new constant symbols $c$ and $d$. For each integer $k\geq 0$, we can find a sentence $\lambda_k$ that translates, ``The distance between $c$ and $d$ is \textit{not} $k$.'' For example,
+\begin{align*}
+  \lambda_0 & =\neg c=d                                                \\
+  \lambda_1 & =\forall p_1(Pcp_1\to\neg p_1=d),                        \\
+  \lambda_2 & =\forall p_1\forall p_2(Pcp_1\to Pp_1p_2\to \neg p_2=d).
+\end{align*}
+Let $\Sigma=\{\lambda_0,\lambda_1,\lambda_2,\dots\}.$ Consider a finite subset of $\Sigma\cup \mathrm{Th}\mathfrak{A}$. That subset is true in $\mathfrak{A}_k$ such that $|c^{\mathfrak{A}_k}-d^{\mathfrak{A}_k}|>k$ for some large $k$. So by compactness $\Sigma\cup \mathrm{Th}\mathfrak{A}$ has a model
+\[
+  \mathfrak{B}=(|\mathfrak{B}|;\mathrm{P}^{\mathfrak{B}},=^{\mathfrak{B}},c^{\mathfrak{B}},d^{\mathfrak{B}})
+\]
+Let $\mathfrak{B}_0$ be the restriction of $\mathfrak{B}$ to the original language: $\mathfrak{B}_0=(|\mathfrak{B}|,\mathrm{P}^{\mathfrak{B}},=^{\mathfrak{B}})$. We have that $\mathfrak B_0$ is a model of $\mathrm{Th}\mathfrak A$, so $\mathfrak{B}_0\equiv \mathfrak{A}$ (you may try to prove this). Note that $c^{\mathfrak{B}}\in|\mathfrak{B}|$ and $d^{\mathfrak{B}}\in|\mathfrak{B}|$, but there is no path between them.
+
+\textit{Comment.} One might ask: every member of the universe should be connected to two unique nodes, then to which nodes is $c^{\mathfrak{B}}$ connected? Well, consider not $c$ and $d$ are located on the single infinite graph that $\mathfrak{A}$ indicates, but that $c$ and $d$ and $\mathbb{Z}$ are on 3 seperate infinite graphs, which together consititute our construction of $|\mathfrak{B}|$. That should make a better (possible) interpretation of what we have been effectively doing. One may feel that $c$ and $d$ are far apart but connected, but that is not the case in $\mathfrak{B}$. All we have is that every finite piece of $\mathfrak{B}_0$ looks like a finite segment of $\mathfrak{A}$.
 
 \begin{exercise}{11.4}
   [Enderton, ex.~11, p.~100]
@@ -43,9 +81,12 @@
   \end{enumerate}
 \end{exercise}
 
-\textcolor{red}{
-  Assuming Definability
-}
+\begin{enumerate}
+  \item $\forall x\ x+a=x$.
+  \item $\forall x\ x\cdot a=x$.
+  \item $\exists y\forall x(x\cdot y=x\wedge n=m+y)$.
+  \item $\exists y\forall x\exists k(x+y=x\wedge \neg k=y\wedge n=m+k)$.
+\end{enumerate}
 
 \begin{exercise}{11.5}
   [Enderton, ex.~6, p.~146]
@@ -56,4 +97,4 @@
   (This can be stated: Disjoint $\text{EC}_\Delta$ classes can be separated by an EC class.) \textit{Suggestion}: $\Sigma_1 \cup \Sigma_2$ is unsatisfiable; apply compactness.
 \end{exercise}
 
-\textcolor{red}{Assuming Mod}
+We may suppose $\Sigma_1$ and $\Sigma_2$ are satisfiable (the other cases are ommitted as trivial). $\Sigma_1\cup \Sigma_2$ is not satisfiable, thus not finitely satisfiable. Say that a finite subset $\Sigma_0$ is inconsistent. Let $\alpha$ be the conjunction of members of $\Sigma_0\cap \Sigma_1$. Clearly $\Sigma_1\vdash \alpha$. We also have that $\Sigma_2\vdash \neg \alpha$, for that if $\Sigma_2;\alpha$ is satisfiable so would be $\Sigma_0$ and thus contradiction, then we are done.

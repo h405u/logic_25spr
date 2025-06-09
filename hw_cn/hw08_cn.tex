@@ -1,1 +1,123 @@
 \homework{8}
+
+\begin{exercise}{8.1}
+  [Enderton, ex.~4, 7, 10, p.~130] 通过演绎证明:
+  \begin{enumerate}
+    \item $\vdash\forall x\ \varphi\rightarrow\exists x\ \varphi;$
+    \item $\vdash\exists x(Px\rightarrow\forall x\ Px);$
+    \item $\{Qx, \forall y(Qy\rightarrow\forall z\ Pz)\}\vdash\forall x\ Px.$
+    \item $\forall x\forall y\ Pxy\vdash\forall y\forall x\ Pyx.$\qedhere
+  \end{enumerate}
+\end{exercise}
+
+\begin{enumerate}
+  \item
+        $\begin{aligned}[t]
+            \vdash\forall x\ \varphi\rightarrow\exists x\ \varphi
+            \Leftarrow & \forall x\ \varphi\vdash \exists x\ \varphi           & \text{by deduction theorem,}         \\
+            \Leftarrow & \forall x\ \varphi\vdash \neg\forall x\ \neg \varphi  & \text{by rewriting,}                 \\
+            \Leftarrow & \forall x\ \neg \varphi \vdash \neg\forall x\ \varphi & \text{by contraposition and rule T,} \\
+            \Leftarrow & \neg \varphi\vdash \neg\forall x\ \varphi             & \text{by Ax.2 and MP,}               \\
+            \Leftarrow & \forall x\ \varphi\vdash \varphi                      & \text{by contraposition and rule T,} \\
+            \Leftarrow & \vdash\forall x\ \varphi\to \varphi                   & \text{by MP, which is Ax.2.}
+          \end{aligned}$
+  \item
+        $\begin{aligned}[t]
+                       & \vdash\exists x(Px\to \forall xPx)                                                                             \\
+            \Leftarrow & \{\forall x\neg(Px\to \forall xPx)\}\text{ is inconsistent}         & \text{by RAA,}                           \\
+            \Leftarrow & \forall x\neg(Px\to \forall xPx)\vdash \forall xPx                                                             \\
+                       & \wedge      \forall x\neg(Px\to \forall xPx)\vdash \neg\forall xPx,                                            \\
+                       & \text{where}                                                                                                   \\
+                       & \forall x\neg(Px\to \forall xPx)\vdash \forall xPx                                                             \\
+            \Leftarrow & \vdash\forall x\neg(Px\to \forall xPx)\to \forall xPx               & \text{by MP,}                            \\
+            \Leftarrow & \vdash\forall x(\neg(Px\to \forall xPx)\to Px)                      & \text{by Ax.3 and MP,}                   \\
+            \Leftarrow & \neg(Px\to \forall xPx)\to Px,                                      & \text{by generalization theorem and MP,} \\
+                       & \text{which is Ax.1, and}                                                                                      \\
+                       & \forall x\neg(Px\to \forall xPx)\vdash \neg\forall xPx,                                                        \\
+            \Leftarrow & \neg(Px\to \forall xPx)\to Px                                       & \text{by Ax.2, which is Ax.1.}
+          \end{aligned}$
+  \item
+        $\begin{aligned}[t]
+                       & \{Qx, \forall y(Qy\rightarrow\forall z\ Pz)\}\vdash\forall x\ Px                                     \\
+            \Leftarrow & \{Qx, \forall y(Qy\rightarrow\forall z\ Pz)\}\vdash\forall w\ Pw & \text{by EAV (cf. \ref{8.2}),}    \\
+            \Leftarrow & \{Qx, \forall y(Qy\rightarrow\forall z\ Pz)\}\vdash  Pw          & \text{by generalization theorem,} \\
+                       & \text{which we show directly:}                                                                       \\
+            1.         & \vdash \forall y(Qy\to \forall zPz)\to Qx\to\forall zPz          & \text{Ax.2.}                      \\
+            2.         & \{Qx,\forall y(Qy\to\forall zPz)\}\vdash \forall zPz             & \text{1; ded.}                    \\
+            3.         & \vdash \forall zPz\to Pw                                         & \text{Ax.2.}                      \\
+            4.         & \{Qx,\forall y(Qy\to\forall zPz)\}\vdash Pw                      & \text{2; 3; MP.}                  \\
+          \end{aligned}$
+  \item
+        $\begin{aligned}[t]
+            1. & \forall x\forall yPxy\vdash \forall a\forall bPab & \text{EAV (cf. \ref{8.2}).} \\
+            2. & \forall a\forall bPab\vdash \forall y\forall xPyx & \text{EAV (cf. \ref{8.2}).} \\
+            3. & \forall x\forall yPxy\vdash \forall y\forall xPyx & \text{1; 2; ded; MP.}
+          \end{aligned}$
+\end{enumerate}
+
+\begin{exercise}{8.2}
+  给出字母变体存在性的完整证明.
+\end{exercise}
+
+\textbf{Existence of Alphabetic Variants (EAV)}\quad 设 $\varphi$ 为公式, $t$ 为项, $x$ 为变量. 我们可以找到公式 $\varphi'$ (与 $\varphi$ 仅在非自由变量的选取上不同) 使得 (a) $\varphi\vdash \varphi'$ 且 $\varphi'\vdash \varphi$, (b) $t$ 对于 $\varphi'$ 中的 $x$ 可替换.
+
+\begin{proof}[Proof Sketch]
+  固定 $t$ 与 $x$, 对 $\varphi$ 递归地构造 $\varphi'$. 当 $\varphi$ 为原子式时取 $\varphi'=\varphi$, 并设 $(\neg \varphi)'=(\neg \varphi')$, $(\varphi\rightarrow \psi)'=(\varphi'\rightarrow \psi')$. 定义 $(\forall y\ \varphi)'=\forall z(\varphi')_z^y$, 其中 $z$ 不出现在 $\varphi'$, $t$, $x$ 中. 由归纳假设可得 (b). 对于 (a) 只需证明 $\forall y\ \varphi\vdash\forall z(\varphi')_z^y$. 考虑序列 $\langle \forall y\ \varphi, \forall y\ \varphi', (\varphi')_z^y, \forall z(\varphi')_z^y\rangle$, 除首项外每一项都可由前项推出. 反向推导可用序列 $\langle\forall z(\varphi')_z^y, ((\varphi')_z^y)_y^z, \varphi',\varphi,\forall y\ \varphi\rangle$ 得到.
+\end{proof}
+
+\begin{exercise}{8.3}
+  [Enderton, ex.~15, p.~131] 证明 \textbf{规则 EI}: 假设常量符号 $c$ 不出现在 $\varphi,\psi$ 或 $\Gamma$ 中, 且 $\Gamma;\varphi_c^x\vdash \psi$. 则有 $\Gamma;\exists x\ \varphi\vdash \psi$, 并且存在一条从 $\Gamma;\exists x\ \varphi$ 推导 $\psi$ 的证明, 其中 $c$ 不出现. (``EI'' 表示 ``existential instantiation''.) 然后利用该规则证明下列公式均可从 $\emptyset$ 推导:
+  \begin{enumerate}
+    \item $\exists x\ \alpha\vee\exists x\ \beta \leftrightarrow \exists x(\alpha\vee \beta);$
+    \item $\forall x\ \alpha\vee\forall x\ \beta \rightarrow \forall x(\alpha\vee \beta).$\qedhere
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  通过逆否可得 $\Gamma;\neg \psi\vdash\neg \varphi_c^x$. 由常数概括定理, 可从 $\Gamma;\neg \psi$ (不含 $c$) 推导出 $\forall y((\neg \varphi_c^x)_y^c)$, 其中 $y$ 不出现在 $\neg\varphi_c^x$ 中. 由于 $c$ 不出现在 $\neg\varphi$ 中, 得 $(\neg\varphi_c^x)_y^c=\neg\varphi_y^x$. 再由 \ref{7.3} 知 $x$ 对于 在 $\neg \varphi_y^x$ 中的 $y$ 是可替换的, 且 $(\neg \varphi_y^x)_x^y=\neg \varphi$, 故 $(\forall y \neg\varphi_y^x)\to \neg\varphi$ 属于 Ax.2, 从而得到 $\forall y\neg \varphi_y^x\vdash\forall x\neg \varphi$. 因此 $\Gamma;\neg \psi\vdash\forall x\neg \varphi$. 再次应用逆否, 证毕.
+\end{proof}
+
+\begin{enumerate}
+  \item
+        $\begin{aligned}[t]
+            \mathrm{a}. & \vdash\exists x\ \alpha\vee\exists x\ \beta\to \exists x(\alpha\vee \beta)                                                                   \\
+            \Leftarrow  & \exists x\ \alpha\vee\exists x\ \beta\vdash \exists x(\alpha\vee \beta)            & \text{by deduction theorem,}                            \\
+            \Leftarrow  & \forall x\neg(\alpha\vee \beta)\vdash\forall x\neg \alpha\wedge\forall x\neg \beta & \text{by contraposition and Ax.1,}                      \\
+                        & \text{which we show directly:}                                                                                                               \\
+            1.          & \vdash\neg(\alpha\vee \beta)_c^x\to\neg \alpha_c^x                                 & \text{Ax.1. $c$ does not occur in $\alpha$ or $\beta$.} \\
+            2.          & \vdash\forall x\neg(\alpha\vee \beta)\to\neg (\alpha\vee\beta)_c^x                 & \text{Ax.2.}                                            \\
+            3.          & \vdash\forall x\neg(\alpha\vee \beta)\to\neg \alpha_c^x                            & \text{1; 2; MP.}                                        \\
+            4.          & \alpha_c^x\vdash\neg\forall x\neg(\alpha\vee \beta)                                & \text{3; ded; contraposition.}                          \\
+            5.          & \exists x \alpha\vdash\neg\forall x\neg(\alpha\vee \beta)                          & \text{4; EI.}                                           \\
+            6.          & \forall x\neg(\alpha\vee \beta)\vdash\forall x\neg\alpha                           & \text{5; contraposition.}                               \\
+            7.          & \forall x\neg(\alpha\vee \beta)\vdash\forall x\neg\beta                            & \text{same as how 6 is deduced.}                        \\
+            8.          & \forall x\neg(\alpha\vee \beta)\vdash\forall x\neg \alpha\wedge\forall x\neg \beta & \text{7; 8; rule T.}                                    \\
+          \end{aligned}$\par
+        $\begin{aligned}[t]
+            \mathrm{b}. & \vdash\exists x(\alpha\vee \beta)\to\exists x \alpha\vee\exists x \beta                                                                                    \\
+            \Leftarrow  & (\alpha\vee \beta)_c^x\vdash\exists x \alpha\vee\exists x \beta                        & \text{by ded and EI ($c$ does not occur in $\alpha$ or $\beta$),} \\
+                        & \text{which we show directly:}                                                                                                                             \\
+            1.          & \forall x\neg \alpha\vdash\neg \alpha_c^x                                              & \text{Ax.2; ded.}                                                 \\
+            2.          & \alpha_c^x\vdash\exists x \alpha                                                       & \text{1; contraposition.}                                         \\
+            3.          & \alpha_c^x\vdash\exists x \alpha\vee\exists x \beta                                    & \text{2; Ax.1; rule T.}                                           \\
+            4.          & \neg(\exists x \alpha\vee \exists x \beta)\vdash\neg \alpha_c^x                        & \text{3; contraposition; Ax.1.}                                   \\
+            5.          & \neg(\exists x \alpha\vee \exists x \beta)\vdash\neg \beta_c^x                         & \text{same as how 4 is deduced.}                                  \\
+            6.          & \neg(\exists x \alpha\vee \exists x \beta)\vdash(\neg \alpha\wedge\neg \beta)_c^x      & \text{4; 5; rule T.}                                              \\
+            7.          & (\alpha\vee \beta)_c^x\vdash \exists x \alpha\vee \exists \beta                        & \text{6; contraposition.}                                         \\
+            \mathrm{c}. & \vdash\exists x \alpha\vee \exists x \beta \leftrightarrow \exists x(\alpha\vee \beta) & \text{a; b; rule T.}
+          \end{aligned}$
+  \item $\begin{aligned}[t]
+                       & \vdash\forall x \alpha\vee\forall x \beta\to\forall x(\alpha\vee \beta)                                                                              \\
+            \Leftarrow & \forall x \alpha\vee \forall x \beta\vdash\forall x(\alpha\vee \beta)               & \text{by deduction theorem,}                                   \\
+            \Leftarrow & \exists x\neg(\alpha\vee \beta)\vdash\exists x \neg \alpha\wedge\exists x\neg \beta & \text{by contraposition and Ax.1,}                             \\
+            \Leftarrow & \neg(\alpha\vee \beta)_c^x\vdash\exists x \neg \alpha\wedge\exists x\neg \beta      & \text{by EI, where $c$ does not occur in $\alpha$ or $\beta$,} \\
+                       & \text{which we show directly:}                                                                                                                       \\
+            1.         & \vdash\forall x \alpha\to \alpha_c^x                                                & \text{Ax.2.}                                                   \\
+            2.         & \forall x \alpha\vdash \alpha_c^x                                                   & \text{1; ded.}                                                 \\
+            3.         & \vdash\alpha_c^x\to (\alpha\vee \beta)_c^x                                          & \text{Ax.1.}                                                   \\
+            4.         & \forall \alpha\vdash(\alpha\vee \beta)_c^x                                          & \text{2; 3; MP.}                                               \\
+            5.         & \neg(\alpha\vee \beta)_c^x\vdash\exists x\neg \alpha                                & \text{4; contraposition.}                                      \\
+            6.         & \neg(\alpha\vee \beta)_c^x\vdash\exists x\neg \beta                                 & \text{same as how 5 is deduced.}                               \\
+            7.         & \neg(\alpha\vee \beta)_c^x\vdash\exists x \neg \alpha\wedge\exists x\neg \beta      & \text{5; 6; rule T.}                                           \\
+          \end{aligned}$
+\end{enumerate}

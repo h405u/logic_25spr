@@ -1,1 +1,54 @@
 \homework{10}
+
+\begin{exercise}{10.1}
+  Axiom group 3.
+\end{exercise}
+
+Consider a fixed $\mathfrak{A}$ and $s$, for every $d\in|\mathfrak{A}|$,
+\begin{align*}
+                  & (\vDash_{\mathfrak{A}}\forall x(\alpha\rightarrow \beta)[s])\wedge(\vDash_{\mathfrak{A}}\forall x\ \alpha[s])                    \\
+  \Leftrightarrow & (\vDash_{\mathfrak{A}}(\alpha\rightarrow \beta)[s(x|d)])\wedge(\vDash_{\mathfrak{A}} \alpha[s(x|d)])                             \\
+  \Leftrightarrow & (\vDash_{\mathfrak{A}}\alpha[s(x|d)]\rightarrow\ \vDash_{\mathfrak{A}}\beta[s(x|d)])\wedge(\vDash_{\mathfrak{A}} \alpha[s(x|d)]) \\
+  \Rightarrow     & \vDash_{\mathfrak{A}}\beta[s(x|d)]                                                                                               \\
+  \Leftrightarrow & \vDash_{\mathfrak{A}}\forall x\ \beta[s].
+\end{align*}
+Thus $\{\forall x(\alpha\rightarrow \beta),\forall x\ \alpha\}\vDash\forall x\ \beta$. And that is equivalent to axiom group 3.
+
+\begin{exercise}{10.2}
+  Axiom group 4.
+\end{exercise}
+
+This is the same question as \ref{9.2}.
+
+\begin{exercise}{10.3}
+  Axiom group 5.
+\end{exercise}
+
+Fix $\mathfrak A$ and $s$. We have that $\vDash_{\mathfrak A}x=x[s]$ iff $s(x)=s(x)$, and that is always true.
+
+\begin{exercise}{10.4}
+  Axiom group 6.
+\end{exercise}
+
+Assume that $\alpha$ is atomic and $\alpha'$ is obtained from $\alpha$ by replacing $x$ at some places by $y$. It suffices to show that
+\[
+  \{x = y, \alpha\} \vDash \alpha'.
+\]
+
+So take any $\mathfrak{A}, s$ such that
+\[
+  \vDash_{\mathfrak{A}} x = y[s], \quad \text{i.e., } s(x) = s(y).
+\]
+
+Then any term $t$ has the property that if $t'$ is obtained from $t$ by replacing $x$ at some places by $y$, then $\bar{s}(t) = \bar{s}(t')$. This is obvious; a full proof would use induction on $t$.
+
+If $\alpha$ is $t_1 = t_2$, then $\alpha'$ must be $t'_1 = t'_2$, where $t'_i$ is obtained from $t_i$ as described.
+
+\begin{align*}
+  \vDash_{\mathfrak{A}} \alpha[s]
+   & \iff \bar{s}(t_1) = \bar{s}(t_2)       \\
+   & \iff \bar{s}(t'_1) = \bar{s}(t'_2)     \\
+   & \iff \vDash_{\mathfrak{A}} \alpha'[s].
+\end{align*}
+
+Similarly, if $\alpha$ is $P t_1 \cdots t_n$, then $\alpha'$ is $P t'_1 \cdots t'_n$ and an analogous argument applies.

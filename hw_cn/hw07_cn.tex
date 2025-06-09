@@ -1,13 +1,13 @@
 \homework{7}
 
 \begin{exercise}{7.1}
-  [Enderton, 练习~1, 2, 5, 第~17~页]
-  在英文和指定的一阶语言之间进行翻译。
+  [Enderton, ex.~1, 2, 5, p.~17]
+  在英文和指定的一阶语言之间进行翻译.
   \begin{enumerate}[label=(\alph*)]
     \item Any uninteresting number with the property that all smaller numbers are interesting certainly is interesting. ($\forall$, for all things; $N$, is a number; $I$, interesting; $<$, is less than; $0$, a constant symbol intended to denote zero.)
     \item There is no number such that no number is less than it. (The same language as in Item a.)
     \item $\forall x(Nx\rightarrow Ix\rightarrow\neg\forall y(Ny\rightarrow Iy\rightarrow\neg x<y))$. (The same language as in Item a. There exists a relatively concise translation.)
-    \item (i) You can fool some of the people all of the time. (ii) You can fool all of the people some of the time. (iii) You can’t fool all of the people all of the time. ($\forall$, for all things; $P$, is a person; $T$ , is a time; $F\ x\ y$, you can fool $x$ at $y$. One or more of the above may be ambiguous, in which case you will need more than one translation.)\qedhere
+    \item (i) You can fool some of the people all of the time. (ii) You can fool all of the people some of the time. (iii) You can't fool all of the people all of the time. ($\forall$, for all things; $P$, is a person; $T$, is a time; $F\ x\ y$, you can fool $x$ at $y$. One or more of the above may be ambiguous, in which case you will need more than one translation.)\qedhere
   \end{enumerate}
 \end{exercise}
 
@@ -19,38 +19,37 @@
 \end{enumerate}
 
 \begin{exercise}{7.2}
-  [Enderton, 练习~1, 第~129~页]
-  对于项 $u$，令 $u_t^x$ 表示将项 $t$ 应用于 $u$ 中变元 $x$ 所得到的表达式。请在不使用任何“替换”或其同义词的情况下重新表述此定义。
+  [Enderton, ex.~1, p.~129]
+  对于一个项 $u$, 记 $u_t^x$ 为将变量 $x$ 用项 $t$ 代换得到的表达式. 请在不使用单词 "replace" 及其同义词的情况下重新表述此定义.
 \end{exercise}
 
-对于项 $t$ 和变元 $x$，我们定义 $\sigma_{x\mapsto t}:V\rightarrow T$，其中 $V$ 是变元的集合，$T$ 是项的集合，且 $\sigma_{x\mapsto t}$ 除将 $x$ 映射到 $t$ 外，在其他情况下为恒等映射。然后递归地定义扩展映射 $\overline{\sigma_{x\mapsto t}}:T\rightarrow T$：
+对于项 $t$ 和变量 $x$, 定义映射 $\sigma_{x\mapsto t}:V\rightarrow T$, 其中 $V$ 是变量集合, $T$ 是项集合, $\sigma_{x\mapsto t}$ 与恒等映射相同, 但将 $x$ 映到 $t$. 进一步递归地定义其扩张 $\overline{\sigma_{x\mapsto t}}:T\rightarrow T$:
 \begin{enumerate}
-  \item 对于每个变元 $v$，有 $\overline{\sigma_{x\mapsto t}}(v)=\sigma_{x\mapsto t}(v)$。
-  \item 对于每个常数符号 $c$，有 $\overline{\sigma_{x\mapsto t}}(c)=c$。
-  \item 对于项 $t_1,\dots,t_n$ 及 $n$ 元函数符号 $f$，
+  \item 对每个变量 $v$, 有 $\overline{\sigma_{x\mapsto t}}(v)=h(v)$.
+  \item 对每个常量符号 $c$, 有 $\overline{\sigma_{x\mapsto t}}(c)=c$.
+  \item 若 $t_1,\dots,t_n$ 为项且 $f$ 为 $n$ 元函数符号, 则
         \[\overline{\sigma_{x\mapsto t}}(f(t_1,\dots,t_n))=f(\overline{\sigma_{x\mapsto t}}(t_1),\dots,\overline{\sigma_{x\mapsto t}}(t_n)).\]
 \end{enumerate}
 
 \begin{exercise}{7.3}
-  [Enderton, 练习~9, 第~130~页]
+  [Enderton, ex.~9, p.~130]
   \begin{enumerate}[label=(\alph*)]
-    \item 通过两个例子说明 $(\varphi_y^x)_x^y$ 一般情况下并不等于 $\varphi$，其中第一个例子展示 $x$ 在 $(\varphi_y^x)_x^y$ 中出现在 $\varphi$ 中未出现的位置，第二个例子展示 $x$ 在 $\varphi$ 中出现在 $(\varphi_y^x)_x^y$ 中未出现的位置。
-    \item 证明重新应用引理（\textit{Re-replacement lemma}）：如果 $y$ 不在 $\varphi$ 中出现，则 $x$ 在 $\varphi_y^x$ 中是可替换的，且有 $(\varphi_y^x)_x^y=\varphi$。\qedhere
+    \item 请给出两个例子证明, $(\varphi_y^x)_x^y$ 一般并不等于 $\varphi$. 第一个例子应说明 $x$ 可能出现在 $(\varphi_y^x)_x^y$ 中而不出现在 $\varphi$ 的对应位置, 第二个例子应说明 $x$ 可能出现在 $\varphi$ 中而不出现在 $(\varphi_y^x)_x^y$ 的对应位置.
+    \item 证明 \textit{Re-replacement lemma}: 若 $y$ 不出现在 $\varphi$ 中, 则 $x$ 对 $\varphi_y^x$ 中的 $y$ 是可替换的, 并且 $(\varphi_y^x)_x^y=\varphi$.\qedhere
   \end{enumerate}
 \end{exercise}
 
 \begin{enumerate}[label=(\alph*)]
-  \item $\varphi=P\ y$（$y$ 在 $\varphi$ 中自由出现）和 $\forall y\ P\ x$（不可替换）。
+  \item $\varphi=P\ y$ ($y$ 在 $\varphi$ 中自由出现) 与 $\varphi=\forall y\ P\ x$ ($y$ 对 $\forall y\ P\ x$ 中的 $x$ 不可替换).
   \item
-        对 $\varphi$ 进行归纳证明。
+        我们对 $\varphi$ 进行归纳证明.
 
-        情形 1：对于原子式 $\varphi=P\ t_1,\dots,t_n$，我们有 $x$ 在 $\varphi_y^x$ 中是可替换的，且
+        Case 1: 若 $\varphi$ 为原子式 $P\ t_1,\dots,t_n$, 则 $x$ 对 $\varphi_y^x$ 中的 $y$ 是可替换的, 且
         \[
           (\varphi_y^x)_x^y = ((P\ t_1,\dots,t_n)_y^x)_x^y = P\ ((t_1)_y^x)_x^y,\dots,((t_n)_y^x)_x^y=\varphi.
         \]
-        情形 2：在归纳假设成立的前提下，由公式构造操作 $\mathcal{E}_{\neg}$、$\mathcal{E}_{\rightarrow}$ 和 $\mathcal{Q}_i$ 的定义可知归纳步骤成立，其中 $v_i\neq x$ 且 $v_i\neq y$（因为 $y$ 不在 $\varphi$ 中出现）。
-        \newline
-        情形 3：$\varphi=\forall x\ \psi$。此时有 $(\forall x\ \psi)_y^x=\forall x\ \psi$，其中 $y$ 不出现（自由地，因此 $x$ 是可替换的）。因此
+        Case 2: 设归纳假设成立, 则对于公式构造算子 $\mathcal{E}_{\neg}$, $\mathcal{E}_{\rightarrow}$ 和 $\mathcal{Q}_i$ (其中 $v_i\neq x$ 且 $v_i\neq y$, 因为 $y$ 不出现在 $\varphi$ 中), 归纳步骤由定义立即成立.\newline
+        Case 3: 若 $\varphi=\forall x\ \psi$, 则 $(\forall x\ \psi)_y^x=\forall x\ \psi$, 其中 $y$ 不自由出现, 因而 $x$ 对 $(\forall x \psi)_y^x$ 中的 $y$ 是可替换的. 因此
         \[
           (\varphi_x^y)_y^x=((\forall x\ \psi)_y^x)_x^y=(\forall x\ \psi)_y^x=\forall x\ \psi=\varphi.
         \]

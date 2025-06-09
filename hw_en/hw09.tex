@@ -5,25 +5,50 @@
   Show that (a) $\Gamma;\alpha\vDash \varphi$ iff $\Gamma\vDash(\alpha\to \varphi)$; and (b) $\varphi\vDash\Dashv \psi$ iff $\vDash(\varphi \leftrightarrow \psi).$
 \end{exercise}
 
-\textcolor{red}{to do}
+\begin{enumerate}[label=(\alph*)]
+  \item
+        $\begin{aligned}[t]
+            \Gamma;\alpha\vDash \varphi & \Leftrightarrow(\forall\tau\ \tau\in\Gamma;\alpha\rightarrow\ \vDash_{\mathfrak{A}}\tau[s])\rightarrow\ \vDash_{\mathfrak{A}}\varphi[s]                                 \\
+                                        & \Leftrightarrow(\forall\tau\ \tau\in \Gamma\rightarrow\ \vDash_{\mathfrak{A}}\tau[s])\ \wedge\vDash_{\mathfrak{A}}\alpha[s]\rightarrow\ \vDash_{\mathfrak{A}}\varphi[s] \\
+                                        & \Leftrightarrow(\forall\tau\ \tau\in \Gamma\rightarrow\ \vDash_{\mathfrak{A}}\tau[s])\rightarrow\ \vDash_{\mathfrak{A}}(\alpha\rightarrow \varphi)[s]                   \\
+                                        & \Leftrightarrow \Gamma\vDash (\alpha\rightarrow \varphi).
+          \end{aligned}$
+  \item Let $\Gamma=\emptyset$ in (a) to have that $\varphi\vDash \psi$ iff $\varphi\to \psi$ and that $\psi\to\varphi$ iff $\psi\to \varphi$, thus we are done.
+\end{enumerate}
+Note that the $\wedge$ and $\Leftrightarrow$ and $\Rightarrow$ used in this proof are only simplifications of meta-reasoning in English.
 
 \begin{exercise}{9.2}
   Show that if $x$ does not occur free in $\alpha$, then $\alpha\vDash\forall x \alpha$.
 \end{exercise}
 
-\textcolor{red}{to do}
+Consider a fixed $\mathfrak{A}$ and $s$. For every $d\in|\mathfrak{A}|$, we have that $s$ and $s(x|d)$ agree at all free variables of $\alpha$, then by theorem 2.17 in slides (which says that $s$ only matters when it comes to free variables) $\vDash_{\mathfrak{A}}\alpha[s]\Leftrightarrow\ \vDash_{\mathfrak{A}}\alpha[s(x|d)]\Leftrightarrow\ \vDash_{\mathfrak{A}}\forall x\ \alpha[s].$
 
 \begin{exercise}{9.3}
-  Show that a formula $\theta$ is valid iff $\forall\theta$ is valid.
+  Show that a formula $\theta$ is valid iff $\forall x\theta$ is valid.
 \end{exercise}
 
-\textcolor{red}{to do}
+Consider a fixed $\mathfrak{A}$ and $s$, $\vDash_{\mathfrak{A}}\varphi[s(x|d)]$ holds for every $d\in|\mathfrak{A}|$ since $\varphi$ is \textit{valid}, and that is exactly $\vDash_{\mathfrak{A}}\forall x\ \varphi[s]$. For the other direction we take $d=s(x)$ to ensure that $s(x|d)=s$. Thus $\varphi \Leftrightarrow\forall x\ \varphi$.
 
 \begin{exercise}{9.4}
   Restate the definition of ``$\mathfrak{A}$ satisfies $\varphi$ with $s$'' by defining recursively a function $\overline{h}$ such that $\mathfrak{A}$ satisfies $\varphi$ with $s$ iff $s\in \overline{h}(\varphi).$
 \end{exercise}
 
-\textcolor{red}{to do}
+To give an alternative definition of \textit{satisfaction}, we first define a function $h: A\rightarrow \mathcal{P}(|\mathfrak{A}|^V)$, where $A$ is the set of atomics: for an $n$-place predicate parameter $P$ (we include $=$ as a $2$-place predicate if it exists),
+\[
+  h(P\ t_1\cdots t_n)=\{s: V\rightarrow|\mathfrak{A}||\langle\bar{s}(t_1),\dots,\bar{s}(t_n)\rangle\in P^{\mathfrak{A}}.\}
+\]
+
+Then we extend $h$ to $\bar{h}$ with the set of wffs as its domain.
+\begin{enumerate}
+  \item $h(\varphi)\subseteq\bar{h}(\varphi).$
+  \item $\bar{h}(\neg \varphi)=\{s: V\rightarrow|\mathfrak{A}||s\notin\bar{h}(\varphi)\}.$
+  \item $\bar{h}(\varphi\rightarrow \psi)=\bar{h}(\varphi)\cup\bar{h}(\psi).$
+  \item $\bar{h}(\forall x\ \varphi)=\{s: V\rightarrow|\mathfrak{A}||\text{ for every }d\in|\mathfrak{A}|, s(x|d)\in\bar{h}(\varphi)\}.$
+\end{enumerate}
+We at last define
+\[
+  \vDash_{\mathfrak{A}}\varphi[s]\text{ iff }s\in\bar{h}(\varphi).\qedhere
+\]
 
 \begin{exercise}{9.5}
   [Enderton, ex.~9, p.~100]
@@ -35,4 +60,8 @@
   \end{enumerate}
 \end{exercise}
 
-\textcolor{red}{to do}
+\begin{enumerate}
+  \item $\exists a\exists b\forall c(\neg a=b\wedge(c=a\vee c=b))$.
+  \item $\forall x\exists y\forall z(P\ xy\wedge(P\ xz\to y=z))$.
+  \item $\forall x\exists y\forall z\exists p\forall q\forall r(P\ xy\wedge(P\ xz\to y=z)\wedge P\ pq\wedge(P\ rq\to p=r))$.
+\end{enumerate}

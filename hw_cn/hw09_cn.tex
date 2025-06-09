@@ -1,51 +1,68 @@
 \homework{9}
 
 \begin{exercise}{9.1}
-  [Enderton, 练习 1，第 99 页]
-  证明：(a) $\Gamma;\alpha\vDash \varphi$ 当且仅当 $\Gamma\vDash(\alpha\to \varphi)$；(b) $\varphi\vDash\Dashv \psi$ 当且仅当 $\vDash(\varphi \leftrightarrow \psi)$。
+  [Enderton, ex.~1, p.~99]
+  证明: (a) $\Gamma;\alpha\vDash \varphi$ 当且仅当 $\Gamma\vDash(\alpha\to \varphi)$, (b) $\varphi\vDash\Dashv \psi$ 当且仅当 $\vDash(\varphi \leftrightarrow \psi)$.
 \end{exercise}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        $\begin{aligned}[t]
+            \Gamma;\alpha\vDash \varphi & \Leftrightarrow(\forall\tau\ \tau\in\Gamma;\alpha\rightarrow\ \vDash_{\mathfrak{A}}\tau[s])\rightarrow\ \vDash_{\mathfrak{A}}\varphi[s]                                 \\
+                                        & \Leftrightarrow(\forall\tau\ \tau\in \Gamma\rightarrow\ \vDash_{\mathfrak{A}}\tau[s])\ \wedge\vDash_{\mathfrak{A}}\alpha[s]\rightarrow\ \vDash_{\mathfrak{A}}\varphi[s] \\
+                                        & \Leftrightarrow(\forall\tau\ \tau\in \Gamma\rightarrow\ \vDash_{\mathfrak{A}}\tau[s])\rightarrow\ \vDash_{\mathfrak{A}}(\alpha\rightarrow \varphi)[s]                   \\
+                                        & \Leftrightarrow \Gamma\vDash (\alpha\rightarrow \varphi).
+          \end{aligned}$
+  \item 在 (a) 中令 $\Gamma=\emptyset$, 得 $\varphi\vDash \psi$ 当且仅当 $\vDash(\varphi\to \psi)$, 同理 $\psi\vDash \varphi$ 当且仅当 $\vDash(\psi\to \varphi)$, 因此命题得证.
+\end{enumerate}
+
+注意: 本证明中出现的 $\wedge$, $\Leftrightarrow$, $\Rightarrow$ 只是元推理的简写.
 
 \begin{exercise}{9.2}
-  [Enderton, 练习 4，第 99 页]
-  证明：如果 $x$ 不在 $\alpha$ 中自由出现，则 $\alpha\vDash\forall x \alpha$。
+  证明: 若 $x$ 在 $\alpha$ 中不自由出现, 则 $\alpha\vDash\forall x \alpha$.
 \end{exercise}
+
+固定 $\mathfrak{A}$ 与 $s$. 对每个 $d\in|\mathfrak{A}|$, 赋值 $s$ 与 $s(x|d)$ 在 $\alpha$ 的所有自由变量上一致, 由课件定理 2.17 可得 $\vDash_{\mathfrak{A}}\alpha[s]\Leftrightarrow\vDash_{\mathfrak{A}}\alpha[s(x|d)]$. 于是 $\vDash_{\mathfrak{A}}\alpha[s]$ 等价于 $\vDash_{\mathfrak{A}}\forall x\ \alpha[s]$, 故结论成立.
 
 \begin{exercise}{9.3}
-  [Enderton, 练习 6，第 99 页]
-  证明：公式 $\theta$ 是有效的，当且仅当 $\forall\theta$ 是有效的。
+  证明: 公式 $\theta$ 有效当且仅当 $\forall x\theta$ 有效.
 \end{exercise}
+
+固定 $\mathfrak{A}$ 与 $s$. 若 $\theta$ 有效, 则对每个 $d\in|\mathfrak{A}|$ 有 $\vDash_{\mathfrak{A}}\theta[s(x|d)]$, 这正是 $\vDash_{\mathfrak{A}}\forall x\ \theta[s]$. 反过来, 取 $d=s(x)$ 使得 $s(x|d)=s$, 则由 $\vDash_{\mathfrak{A}}\forall x\ \theta[s]$ 推得 $\vDash_{\mathfrak{A}}\theta[s]$. 因此 $\theta$ 有效当且仅当 $\forall x\theta$ 有效.
 
 \begin{exercise}{9.4}
-  [Enderton, 练习 7，第 99 页]
-  将“$\mathfrak{A}$ 在赋值 $s$ 下满足 $\varphi$”的定义，重新表述为递归地定义一个函数 $\overline{h}$，使得 $\mathfrak{A}$ 在赋值 $s$ 下满足 $\varphi$ 当且仅当 $s\in \overline{h}(\varphi)$。
+  通过递归地定义函数 $\overline{h}$, 重新表述 “$\mathfrak{A}$ 在赋值 $s$ 下满足 $\varphi$”, 使得 $\mathfrak{A}$ 在赋值 $s$ 下满足 $\varphi$ 当且仅当 $s\in\overline{h}(\varphi)$.
 \end{exercise}
 
+首先定义 $h:A\rightarrow \mathcal{P}(|\mathfrak{A}|^V)$, 其中 $A$ 为原子公式的集合. 对于 $n$ 元谓词参数 $P$ (若语言含有 $=$, 视其为 $2$ 元谓词),
+\[
+  h(P\ t_1\cdots t_n)=\{s:V\rightarrow|\mathfrak{A}|\mid\langle\bar{s}(t_1),\dots,\bar{s}(t_n)\rangle\in P^{\mathfrak{A}}\}.
+\]
+
+然后把 $h$ 扩张为以所有公式为定义域的 $\bar{h}$:
+\begin{enumerate}
+  \item 对原子式有 $h(\varphi)\subseteq\bar{h}(\varphi)$.
+  \item $\bar{h}(\neg \varphi)=\{s:V\rightarrow|\mathfrak{A}|\mid s\notin\bar{h}(\varphi)\}$.
+  \item $\bar{h}(\varphi\rightarrow \psi)=\bar{h}(\varphi)\cup\bar{h}(\psi)$.
+  \item $\bar{h}(\forall x\ \varphi)=\{s:V\rightarrow|\mathfrak{A}|\mid\text{对于每个 }d\in|\mathfrak{A}|, s(x|d)\in\bar{h}(\varphi)\}$.
+\end{enumerate}
+最终定义
+\[
+  \vDash_{\mathfrak{A}}\varphi[s]\text{ iff }s\in\bar{h}(\varphi).\qedhere
+\]
+
 \begin{exercise}{9.5}
-  [Enderton, 练习 9，第 100 页]
-  假设语言中含有等号和一个二元谓词符号 $P$。对于下列每一个条件，找出一个句子 $\sigma$，使得结构 $\mathfrak{A}$ 是 $\sigma$ 的一个模型，当且仅当该条件成立。
+  [Enderton, ex.~9, p.~100]
+  设语言含有相等符号及二元谓词符号 $P$. 对下列每一条件, 构造句子 $\sigma$, 使得结构 $\mathfrak{A}$ 成为 $\sigma$ 的模型当且仅当该条件成立.
   \begin{enumerate}[label=(\alph*)]
-    \item $|\mathfrak{A}|$ 恰好有两个元素。
-    \item $P^{\mathfrak{A}}$ 是从 $|\mathfrak{A}|$ 到 $|\mathfrak{A}|$ 的函数。（函数指单值关系。如第 0 章所述，若 $f$ 是从 $A$ 到 $B$ 的函数，则 $f$ 的定义域是 $A$，而值域是 $B$ 的子集，不一定是适当子集。）
-    \item $P^{\mathfrak{A}}$ 是 $|\mathfrak{A}|$ 上的置换，即 $P^{\mathfrak{A}}$ 是定义域和值域均为 $|\mathfrak{A}|$ 的双射。\qedhere
+    \item $|\mathfrak{A}|$ 恰有两个元素.
+    \item $P^{\mathfrak{A}}$ 是从 $|\mathfrak{A}|$ 映入 $|\mathfrak{A}|$ 的函数. (函数指单值关系. 若 $f$ 是从 $A$ 到 $B$ 的函数, 则 $\operatorname{dom}f=A$, 而 $\operatorname{rng}f\subseteq B$.)
+    \item $P^{\mathfrak{A}}$ 是 $|\mathfrak{A}|$ 的置换, 即 $P^{\mathfrak{A}}$ 是定义域和值域均为 $|\mathfrak{A}|$ 的一一对应函数.\qedhere
   \end{enumerate}
 \end{exercise}
 
-% \begin{exercise}{9.6}
-%   [Enderton, 练习 10，第 100 页]
-%   证明
-%   \[
-%     \models_{\mathfrak{A}} \forall v_2 \, Q v_1 v_2 [[c^\mathfrak{A}]] \quad \text{iff} \quad \models_{\mathfrak{A}} \forall v_2 \, Q c v_2
-%   \]
-%   其中 $Q$ 是二元谓词符号，$c$ 是常数符号。
-% \end{exercise}
-%
-% \begin{exercise}{9.7}
-%   [Enderton, 练习 11，第 100 页]
-%   对于下列每一个关系，给出在 $(\mathbb{N}; +, \cdot)$ 中定义它的公式。（语言中包含等号以及符号 $\forall$、$+$ 和 $\cdot$。）
-%   \begin{enumerate}
-%     \item $\{0\}$。
-%     \item $\{1\}$。
-%     \item $\{\langle m, n \rangle \mid n$ 是 $m$ 在 $\mathbb{N}$ 中的后继元素$\}$。
-%     \item $\{\langle m, n \rangle \mid m<n$ 在 $\mathbb{N}$ 中成立$\}$。\qedhere
-%   \end{enumerate}
-% \end{exercise}
+\begin{enumerate}
+  \item $\exists a\exists b\forall c(\neg a=b\wedge(c=a\vee c=b))$.
+  \item $\forall x\exists y\forall z(P\ xy\wedge(P\ xz\to y=z))$.
+  \item $\forall x\exists y\forall z\exists p\forall q\forall r(P\ xy\wedge(P\ xz\to y=z)\wedge P\ pq\wedge(P\ rq\to p=r))$.
+\end{enumerate}

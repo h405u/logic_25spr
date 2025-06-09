@@ -1,15 +1,15 @@
 \homework{11}
 
 \begin{exercise}{11.1}
-  [Enderton，第 4 题，第 146 页]
-  设 $\Gamma=\{\neg\forall v_1 P v_1, Pv_2, Pv_3,\dots\}$。$\Gamma$ 是一致的吗？$\Gamma$ 是可满足的吗？
+  [Enderton, ex.~4, p.~146]
+  设 $\Gamma=\{\neg\forall v_1 P v_1, Pv_2, Pv_3,\dots\}$. 问: $\Gamma$ 是否一致? $\Gamma$ 是否可满足?
 \end{exercise}
 
-\textcolor{red}{to do}
+它既一致又可满足. 令 $P^{\mathfrak{A}}=\{v_2,v_3,\dots\}$, 取 $s:V\rightarrow|\mathfrak{A}|$ 为恒等映射, 则对所有 $\gamma\in\Gamma$ 有 $\vDash_{\mathfrak{A}}\gamma[s]$.
 
 \begin{exercise}{11.2}
-  [Enderton，第 7 题，第 146 页]
-  对于下列每个句子，要么说明其存在一个推导，要么给出一个反模型（即在其中该句子为假的结构）。
+  [Enderton, ex.~7, p.~146]
+  对下列每个句子, 或给出推导, 或给出反例结构 (即使其为假的结构).
   \begin{enumerate}[label=(\alph*)]
     \item $\forall x (Qx \rightarrow \forall y \, Qy)$
     \item $(\exists x \, Px \rightarrow \forall y \, Qy) \rightarrow \forall z (Pz \rightarrow Qz)$
@@ -18,42 +18,82 @@
   \end{enumerate}
 \end{exercise}
 
-\textcolor{red}{to do}
+\begin{enumerate}[label=(\alph*)]
+  \item 不成立. 取 $|\mathfrak A|=\{0,1\}$ 且 $Q^{\mathfrak A}=\{1\}$. 则 $\mathfrak A$ 为反例结构.
+  \item 可证明, 推导如下:\newline
+        $\begin{aligned}[t]
+                       & \vdash(\exists xPx\to\forall yQy)\to \forall z(Pz\to Qz)                             \\
+            \Leftarrow & \exists xPx\to\forall yQy\vdash \forall z(Pz\to Qz)      & \text{by ded,}            \\
+            \Leftarrow & \{\exists xPx\to\forall yQy, Pz\}\vdash Qz               & \text{by gen and ded,}    \\
+                       & \text{which we show directly:}                                                       \\
+            1.         & \forall x\neg Px\vdash \neg Pz                           & \text{Ax.2; ded.}         \\
+            2.         & Pz\vdash \neg\forall x\neg Px                            & \text{1; contraposition.} \\
+            3.         & \{\exists xPx\to\forall yQy, Pz\}\vdash \forall yQy      & \text{2; MP.}             \\
+            4.         & \vdash\forall yQy\to Qz                                  & \text{Ax.2.}              \\
+            5.         & \{\exists xPx\to\forall yQy, Pz\}\vdash Qz               & \text{3; 4; MP.}          \\
+          \end{aligned}$
+  \item 不成立. 取 $|\mathfrak A|=\{0,1\}$ 且 $P^{\mathfrak A}=Q^{\mathfrak A}=\{1\}$. 则 $\mathfrak A$ 为反例结构.
+  \item 可证明, 推导如下:\newline
+        $\begin{aligned}[t]
+                       & \vdash\neg\exists y\forall x(Pxy \leftrightarrow \neg Pxx)                                                          \\
+            \Leftarrow & \vdash\forall y\neg \forall x(Pxy \leftrightarrow\neg Pxx)                                 & \text{by Ax.1 and MP,} \\
+            \Leftarrow & \vdash\neg \forall x(Pxy \leftrightarrow\neg Pxx)                                          & \text{by gen,}         \\
+                       & \text{which we show directly:}                                                                                      \\
+            1.         & \vdash\neg(Pxy \leftrightarrow \neg Pxx)_y^x                                               & \text{Ax.1.}           \\
+            2.         & \vdash\forall x(Pxy \leftrightarrow \neg Pxx)\to (Pxy \leftrightarrow \neg Pxx)_y^x        & \text{Ax.2.}           \\
+            3.         & \vdash\neg(Pxy \leftrightarrow \neg Pxx)_y^x\to\neg\forall x(Pxy \leftrightarrow \neg Pxx) & \text{2; Ax.1; MP.}    \\
+            4.         & \vdash\neg \forall x(Pxy \leftrightarrow\neg Pxx)                                          & \text{1; 3; MP.}       \\
+          \end{aligned}$
+\end{enumerate}
 
 \begin{exercise}{11.3}
-  [Enderton，第 8 题，第 146 页]
-  假设该语言（带等号）仅包含量词 $\forall$ 和谓词符号 $P$，其中 $P$ 是一个二元谓词符号。设 $\mathfrak{A}$ 是一个结构，其 $|\mathfrak{A}| = \mathbb{Z}$，即整数集合（正整数、负整数和零），并且当且仅当 $|a - b| = 1$ 时，有 $\langle a, b \rangle \in P^{\mathfrak{A}}$。因此，$\mathfrak{A}$ 看起来像一个无限图：
+  [Enderton, ex.~8, p.~146]
+  设语言 (含相等) 仅有量词和二元谓词符号 $P$. 取结构 $\mathfrak{A}$, 其中 $|\mathfrak{A}|=\mathbb{Z}$, 且 $\langle a,b\rangle\in P^{\mathfrak{A}}$ 当且仅当 $|a-b|=1$. 因此 $\mathfrak{A}$ 如同一条无限链:
   \[
     \cdots \longleftrightarrow \bullet \longleftrightarrow \bullet \longleftrightarrow \bullet \longleftrightarrow \cdots
   \]
-
-  证明存在一个与其初等等价的结构 $\mathfrak{B}$，但它不是连通的。（连通，是指对于 $|\mathfrak{B}|$ 中任意两个元素，存在一条路径连接它们。一条从 $a$ 到 $b$ 的长度为 $n$的路径是一个序列 $\langle p_0, p_1, \ldots, p_n \rangle$，其中 $a = p_0$ 且 $b = p_n$，并且对于每个 $i$，都有 $\langle p_i, p_{i+1} \rangle \in P^{\mathfrak{B}}$。）提示：加入常元符号 $c$ 和 $d$。写出表示 $c$ 和 $d$ 距离很远的句子。应用紧致性。
+  证明: 存在与 $\mathfrak{A}$ 初等等价但非连通的结构 $\mathfrak{B}$. (连通指对 $|\mathfrak{B}|$ 中任意两点存在路径相连. 长度为 $n$ 的路径 $\langle p_0,p_1,\dots,p_n\rangle$ 满足 $p_0=a$, $p_n=b$, 且对每个 $i$ 有 $\langle p_i,p_{i+1}\rangle\in P^{\mathfrak{B}}$.) 建议: 加入常量符号 $c,d$, 写句子声明 $c,d$ 距离很远, 再用紧致性.
 \end{exercise}
 
-\textcolor{red}{to do}
+在语言中增添常量 $c,d$. 对每个整数 $k\ge 0$, 构造句子 $\lambda_k$ 表示 “$c$ 与 $d$ 的距离不是 $k$”. 例如,
+\begin{align*}
+  \lambda_0 & =\neg c=d,                                               \\
+  \lambda_1 & =\forall p_1(Pcp_1\to\neg p_1=d),                        \\
+  \lambda_2 & =\forall p_1\forall p_2(Pcp_1\to Pp_1p_2\to \neg p_2=d).
+\end{align*}
+设 $\Sigma=\{\lambda_0,\lambda_1,\lambda_2,\dots\}$. 取 $\Sigma\cup\mathrm{Th}\mathfrak{A}$ 的任意有限子集, 它在某个 $\mathfrak{A}_k$ 中成立, 其中 $|c^{\mathfrak{A}_k}-d^{\mathfrak{A}_k}|>k$. 故由紧致性, $\Sigma\cup\mathrm{Th}\mathfrak{A}$ 有模型
+\[
+  \mathfrak{B}=(|\mathfrak{B}|;P^{\mathfrak{B}},=^{\mathfrak{B}},c^{\mathfrak{B}},d^{\mathfrak{B}}).
+\]
+记 $\mathfrak{B}_0$ 为去掉新常量后的结构: $\mathfrak{B}_0=(|\mathfrak{B}|,P^{\mathfrak{B}},=^{\mathfrak{B}})$. 则 $\mathfrak{B}_0\models\mathrm{Th}\mathfrak{A}$, 因而 $\mathfrak{B}_0\equiv\mathfrak{A}$. 然而 $c^{\mathfrak{B}}$ 与 $d^{\mathfrak{B}}$ 间不存在路径, 故 $\mathfrak{B}_0$ 非连通.
+
+注. 可将 $c,d$ 各自所在的无限链与 $\mathbb{Z}$ 看作三条彼此不连通的链, 它们共同组成 $|\mathfrak{B}|$. 对 $\mathfrak{B}_0$ 的任何有限子结构, 看起来都与 $\mathfrak{A}$ 的某段有限子链相同.
 
 \begin{exercise}{11.4}
-  [Enderton，第 11 题，第 100 页]
-  对于下列每个关系，在 \((\mathbb{N}; +, \cdot)\) 中给出一个定义它的公式。（语言被假设包含等号以及参数 \(\forall\)、\(+\)、和 \(\cdot\)。）
+  [Enderton, ex.~11, p.~100]
+  在结构 $(\mathbb{N}; +,\cdot)$ 中 (语言含相等及符号 $\forall,+,\cdot$), 对下列关系给出定义它们的公式.
   \begin{enumerate}
-    \item \(\{0\}\).
-    \item \(\{1\}\).
-    \item \(\{ \langle m, n \rangle \mid n \text{ 是 } m \text{ 在 } \mathbb{N} \text{ 中的后继} \}\).
-    \item \(\{ \langle m, n \rangle \mid m < n \text{ 在 } \mathbb{N} \text{ 中} \}\).\qedhere
+    \item $\{0\}$.
+    \item $\{1\}$.
+    \item $\{\langle m,n\rangle\mid n\text{ 是 } m\text{ 的后继}\}$.
+    \item $\{\langle m,n\rangle\mid m<n\}$.\qedhere
   \end{enumerate}
 \end{exercise}
 
-\textcolor{red}{
-  Assuming Definability
-}
+\begin{enumerate}
+  \item $\forall x\ x+a=x$.
+  \item $\forall x\ x\cdot a=x$.
+  \item $\exists y\forall x(x\cdot y=x\wedge n=m+y)$.
+  \item $\exists y\forall x\exists k(x+y=x\wedge \neg k=y\wedge n=m+k)$.
+\end{enumerate}
 
 \begin{exercise}{11.5}
-  [Enderton，第 6 题，第 146 页]
-  设 $\Sigma_1$ 和 $\Sigma_2$ 是两个句子的集合，且没有模型同时满足 $\Sigma_1$ 和 $\Sigma_2$。证明存在一个句子 $\tau$，使得
+  [Enderton, ex.~6, p.~146]
+  设 $\Sigma_1,\Sigma_2$ 为句子集, 且不存在同时满足两者的结构. 证明存在句子 $\tau$ 使得
   \[
-    \text{Mod } \Sigma_1 \subseteq \text{Mod } \tau \quad \text{且} \quad \text{Mod } \Sigma_2 \subseteq \text{Mod } \lnot \tau.
+    \text{Mod }\Sigma_1\subseteq\text{Mod }\tau,\quad \text{且}\quad \text{Mod }\Sigma_2\subseteq\text{Mod }\lnot\tau.
   \]
-  （这可以表述为：不相交的 $\text{EC}_\Delta$ 类可以被某个 EC 类区分开。）提示：$\Sigma_1 \cup \Sigma_2$ 是不可满足的；应用紧致性。
+  (等价表述: 不相交的 $\text{EC}_\Delta$ 类可以用一条 EC 类分开.) 提示: $\Sigma_1\cup\Sigma_2$ 不可满足, 用紧致性.
 \end{exercise}
 
-\textcolor{red}{Assuming Mod}
+可设 $\Sigma_1,\Sigma_2$ 均可满足 (其余情形显然). 因 $\Sigma_1\cup\Sigma_2$ 不可满足, 故其某有限子集 $\Sigma_0$ 不可满足. 设 $\alpha$ 为 $\Sigma_0\cap\Sigma_1$ 中句子的合取. 则 $\Sigma_1\vdash\alpha$. 若 $\Sigma_2\not\vdash\neg\alpha$, 则 $\Sigma_2;\alpha$ 可满足, 这与 $\Sigma_0$ 不可满足矛盾. 因而 $\Sigma_2\vdash\neg\alpha$. 取 $\tau=\alpha$, 则满足要求.

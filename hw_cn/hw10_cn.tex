@@ -1,1 +1,53 @@
 \homework{10}
+
+\begin{exercise}{10.1}
+  公理组 3.
+\end{exercise}
+
+固定 $\mathfrak{A}$ 与 $s$, 对每个 $d\in|\mathfrak{A}|$, 有
+\begin{align*}
+                  & (\vDash_{\mathfrak{A}}\forall x(\alpha\rightarrow \beta)[s])\wedge(\vDash_{\mathfrak{A}}\forall x\ \alpha[s])                    \\
+  \Leftrightarrow & (\vDash_{\mathfrak{A}}(\alpha\rightarrow \beta)[s(x|d)])\wedge(\vDash_{\mathfrak{A}} \alpha[s(x|d)])                             \\
+  \Leftrightarrow & (\vDash_{\mathfrak{A}}\alpha[s(x|d)]\rightarrow\ \vDash_{\mathfrak{A}}\beta[s(x|d)])\wedge(\vDash_{\mathfrak{A}} \alpha[s(x|d)]) \\
+  \Rightarrow     & \vDash_{\mathfrak{A}}\beta[s(x|d)]                                                                                               \\
+  \Leftrightarrow & \vDash_{\mathfrak{A}}\forall x\ \beta[s].
+\end{align*}
+于是 $\{\forall x(\alpha\rightarrow \beta),\forall x\ \alpha\}\vDash\forall x\ \beta$. 这与公理组 3 等价.
+
+\begin{exercise}{10.2}
+  公理组 4.
+\end{exercise}
+
+Cf. \ref{9.2}.
+
+\begin{exercise}{10.3}
+  公理组 5.
+\end{exercise}
+
+固定 $\mathfrak A$ 与 $s$. 有 $\vDash_{\mathfrak A}x=x[s]$ 当且仅当 $s(x)=s(x)$, 而这始终成立.
+
+\begin{exercise}{10.4}
+  公理组 6.
+\end{exercise}
+
+设 $\alpha$ 为原子式, $\alpha'$ 由 $\alpha$ 在若干处将 $x$ 替换为 $y$ 得到. 只需证明
+\[
+  \{x = y, \alpha\} \vDash \alpha'.
+\]
+
+取任意 $\mathfrak{A}, s$ 使得
+\[
+  \vDash_{\mathfrak{A}} x = y[s], \quad \text{i.e., } s(x) = s(y).
+\]
+
+则任何项 $t$ 满足: 若 $t'$ 由 $t$ 在若干处把 $x$ 替换为 $y$ 得到, 则 $\bar{s}(t)=\bar{s}(t')$. 这一点显然成立; 完整证明可对 $t$ 做归纳.
+
+若 $\alpha$ 为 $t_1 = t_2$, 则 $\alpha'$ 为 $t'_1 = t'_2$, 其中 $t'_i$ 按上述方式由 $t_i$ 得到. 于是
+\begin{align*}
+  \vDash_{\mathfrak{A}} \alpha[s]
+   & \iff \bar{s}(t_1) = \bar{s}(t_2)       \\
+   & \iff \bar{s}(t'_1) = \bar{s}(t'_2)     \\
+   & \iff \vDash_{\mathfrak{A}} \alpha'[s].
+\end{align*}
+
+同理, 若 $\alpha$ 为 $P t_1 \cdots t_n$, 则 $\alpha'$ 为 $P t'_1 \cdots t'_n$, 相同的论证亦成立.
