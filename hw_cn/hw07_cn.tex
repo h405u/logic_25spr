@@ -20,12 +20,12 @@
 
 \begin{exercise}{7.2}
   [Enderton, ex.~1, p.~129]
-  对于一个项 $u$, 记 $u_t^x$ 为将变量 $x$ 用项 $t$ 代换得到的表达式. 请在不使用单词 "replace" 及其同义词的情况下重新表述此定义.
+  对于一个项 $u$, 记 $u_t^x$ 为将变量 $x$ 用项 $t$ 代换得到的表达式. 请在不使用单词 ``replace" 及其同义词的情况下重新表述此定义.
 \end{exercise}
 
 对于项 $t$ 和变量 $x$, 定义映射 $\sigma_{x\mapsto t}:V\rightarrow T$, 其中 $V$ 是变量集合, $T$ 是项集合, $\sigma_{x\mapsto t}$ 与恒等映射相同, 但将 $x$ 映到 $t$. 进一步递归地定义其扩张 $\overline{\sigma_{x\mapsto t}}:T\rightarrow T$:
 \begin{enumerate}
-  \item 对每个变量 $v$, 有 $\overline{\sigma_{x\mapsto t}}(v)=h(v)$.
+  \item 对每个变量 $v$, 有 $\overline{\sigma_{x\mapsto t}}(v)=\sigma_{x\mapsto t}(v)$.
   \item 对每个常量符号 $c$, 有 $\overline{\sigma_{x\mapsto t}}(c)=c$.
   \item 若 $t_1,\dots,t_n$ 为项且 $f$ 为 $n$ 元函数符号, 则
         \[\overline{\sigma_{x\mapsto t}}(f(t_1,\dots,t_n))=f(\overline{\sigma_{x\mapsto t}}(t_1),\dots,\overline{\sigma_{x\mapsto t}}(t_n)).\]

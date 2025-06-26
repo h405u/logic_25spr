@@ -1,7 +1,7 @@
 \homework{7}
 
 \begin{exercise}{7.1}
-  [Enderton, ex.~1, 2, 5, p.~17]
+  [Enderton, ex.~1, 2, 5, p.~79]
   Translate between English and the specified first-order language.
   \begin{enumerate}[label=(\alph*)]
     \item Any uninteresting number with the property that all smaller numbers are interesting certainly is interesting. ($\forall$, for all things; $N$, is a number; $I$, interesting; $<$, is less than; $0$, a constant symbol intended to denote zero.)
@@ -25,7 +25,7 @@
 
 For term $t$ and variable $x$, we define $\sigma_{x\mapsto t}:V\rightarrow T$, where $V$ is the set of variables, $T$ the set of terms and $\sigma_{x\mapsto t}$ identity except that it maps $x$ to $t$ and then recursively define the extension $\overline{\sigma_{x\mapsto t}}:T\rightarrow T$:
 \begin{enumerate}
-  \item For each variable $v$, $\overline{\sigma_{x\mapsto t}}(v)=h(v)$.
+  \item For each variable $v$, $\overline{\sigma_{x\mapsto t}}(v)=\sigma_{x\mapsto t}(v)$.
   \item For each constant symbol $c$, $\overline{\sigma_{x\mapsto t}}(c)=c$.
   \item For terms $t_1,\dots,t_n$ and $n$-place function symbol $f$,
         \[\overline{\sigma_{x\mapsto t}}(f(t_1,\dots,t_n))=f(\overline{\sigma_{x\mapsto t}}(t_1),\dots,\overline{\sigma_{x\mapsto t}}(t_n)).\]
